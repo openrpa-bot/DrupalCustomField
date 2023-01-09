@@ -54,6 +54,29 @@ class StateFieldType extends FieldItemBase {
       ]
     ];
   }
+/**
+           * {@inheritdoc}
+           */
+          public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
+            $properties['rowId'] = DataDefinition::create('integer')
+              ->setLabel(t('Row ID'))
+              ->setDescription(t('Selected the Row ID.'))
+              ->setRequired(TRUE);
+
+            $properties['columnId'] = DataDefinition::create('integer')
+              ->setLabel(t('Column ID'))
+              ->setDescription(t('Selected the Column ID.'))
+              ->setRequired(TRUE);
+
+            $properties['Option'] = DataDefinition::create('string')
+              ->setLabel(t('Option'))
+              ->setDescription(t('Selected the Option.'))
+              ->setRequired(TRUE);
+
+            return $properties;
+          }
+
+
    /**
      * {@inheritdoc}
      */
@@ -77,27 +100,7 @@ class StateFieldType extends FieldItemBase {
         'available_images' => [],
       ] + parent::defaultFieldSettings();
     }
-    /**
-           * {@inheritdoc}
-           */
-          public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
-            $properties['rowId'] = DataDefinition::create('integer')
-              ->setLabel(t('Row ID'))
-              ->setDescription(t('Selected the Row ID.'))
-              ->setRequired(TRUE);
 
-            $properties['columnId'] = DataDefinition::create('integer')
-              ->setLabel(t('Column ID'))
-              ->setDescription(t('Selected the Column ID.'))
-              ->setRequired(TRUE);
-
-            $properties['Option'] = DataDefinition::create('string')
-              ->setLabel(t('Option'))
-              ->setDescription(t('Selected the Option.'))
-              ->setRequired(TRUE);
-
-            return $properties;
-          }
 
        /**
          * {@inheritdoc}
