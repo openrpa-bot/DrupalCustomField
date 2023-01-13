@@ -81,8 +81,6 @@ public static function propertyDefinitions(FieldStorageDefinitionInterface $fiel
   public static function mainPropertyName() {
     return 'Option';
   }
-
-
    /**
      * {@inheritdoc}
      */
