@@ -25,7 +25,7 @@ class StateFieldFormatter extends FormatterBase {
     public function viewElements(FieldItemListInterface $items, $langcode) {
       foreach ($items as $delta => $item) {
         // Render each element as markup.
-       // $element[$delta] = ['#markup' => $item->rowId .':' . $item->columnId .':'.$item->Option ];
+        $element[$delta] = ['#markup' => $item->rowId .':' . $item->columnId .':'.$item->Option ];
       }
 
       return $element;
