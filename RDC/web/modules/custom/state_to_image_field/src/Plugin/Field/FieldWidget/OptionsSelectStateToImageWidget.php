@@ -2,6 +2,7 @@
 
 namespace Drupal\state_to_image_field\Plugin\Field\FieldWidget;
 
+use Drupal\Core\Field\Plugin\Field\FieldWidget\OptionsWidgetBase;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
