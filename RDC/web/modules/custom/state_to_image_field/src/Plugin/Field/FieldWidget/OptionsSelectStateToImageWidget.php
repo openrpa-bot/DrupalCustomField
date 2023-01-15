@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\ListStateToImageItem\Plugin\Field\FieldWidget;
+namespace Drupal\state_to_image_field\Plugin\Field\FieldWidget;
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Field\FieldItemListInterface;
@@ -10,10 +10,10 @@ use Drupal\Core\Form\FormStateInterface;
  * Plugin implementation of the 'options_select_state_to_image' widget.
  *
  * @FieldWidget(
- *   id = "options_select_state_to_image",
+ *   id = "state_to_image_field_widget",
  *   label = @Translation("Select state to image list"),
  *   field_types = {
- *     "list_state_to_image_string"
+ *     "state_to_image_field"
  *   },
  *   multiple_values = TRUE
  * )

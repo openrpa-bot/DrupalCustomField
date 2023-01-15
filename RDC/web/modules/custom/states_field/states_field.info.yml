@@ -1,4 +1,4 @@
-name: List State to Image
+name: States to Image
 type: module
 description: 'State to select and corresponding Image to display.'
 package: AA FIELD TYPES
@@ -7,4 +7,4 @@ dependencies:
   - drupal:field
 
 version: '1.0.0'
-project: 'List State To Image'
+project: 'State To Image'

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\ListStateToImageItem\Plugin\Field\FieldFormatter;
+namespace Drupal\state_to_image_field\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\FieldFilteredMarkup;
 use Drupal\Core\Field\FormatterBase;
@@ -8,13 +8,13 @@ use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\OptGroup;
 
 /**
- * Plugin implementation of the 'state_to_image_default_formatter' formatter.
+ * Plugin implementation of the 'state_to_image_field_formatter' formatter.
  *
  * @FieldFormatter(
- *   id = "state_to_image_default_formatter",
+ *   id = "state_to_image_field_formatter",
  *   label = @Translation("Default"),
  *   field_types = {
- *     "list_state_to_image_string"
+ *     "state_to_image_field"
  *   }
  * )
  */

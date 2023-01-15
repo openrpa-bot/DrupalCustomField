@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\ListStateToImageItem\Plugin\Field\FieldType;
+namespace Drupal\state_to_image_field\Plugin\Field\FieldType;
 
 use Drupal\Core\Field\FieldFilteredMarkup;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
@@ -8,15 +8,15 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\TypedData\DataDefinition;
 
 /**
- * Plugin implementation of the 'list_state_to_image_string' field type.
+ * Plugin implementation of the 'state_to_image_field' field type.
  *
  * @FieldType(
- *   id = "list_state_to_image_string",
+ *   id = "state_to_image_field",
  *   label = @Translation("List (State To Image)"),
  *   description = @Translation("This field stores text values from a list of allowed 'value => label' pairs, i.e. 'US States': IL => Illinois, IA => Iowa, IN => Indiana."),
  *   category = @Translation("State To Image"),
- *   default_widget = "options_select_state_to_image",
- *   default_formatter = "state_to_image_default_formatter",
+ *   default_widget = "state_to_image_field_widget",
+ *   default_formatter = "state_to_image_field_formatter",
  * )
  */
 class ListStateToImageItem extends ListItemBase {
