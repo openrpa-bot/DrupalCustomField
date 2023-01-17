@@ -77,5 +77,35 @@ class ListStateToImageItem extends ListItemBase {
   protected static function castAllowedValue($value) {
     return (string) $value;
   }
+    //New Added Code Begin
+    /**
+     * {@inheritdoc}
+     */
+    public static function defaultStorageSettings() {
+      return [
+        'rowId_Max_Limit'         => 100,
+        'columnId_Max_Limit'      => 100,
+        'Option_Length'           => 255,
+        'Option_Image_Folder'     => '',
+        'default_state_field_value' => [
+            'value' => 'None',
+            'rowId' => 3,
+            'columnId' => 3,
+        ],
+      ] + parent::defaultStorageSettings();
+    }
 
+    /**
+     * {@inheritdoc}
+     */
+    public static function defaultFieldSettings() {
+      return [
+        'default_state_field_value' => [
+            'value' => 'None',
+            'rowId' => 2,
+            'columnId' => 2,
+          ],
+      ] + parent::defaultFieldSettings();
+    }
+    //New Added Code End
 }
