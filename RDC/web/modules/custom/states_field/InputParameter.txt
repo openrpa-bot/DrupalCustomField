@@ -1,0 +1,4 @@
+None|Blank.jpg
+Available|Blank.jpg
+Selected|Green.jpg
+Booked|Saffron.png
