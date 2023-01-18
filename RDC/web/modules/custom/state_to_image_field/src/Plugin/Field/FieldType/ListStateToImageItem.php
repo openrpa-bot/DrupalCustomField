@@ -26,10 +26,19 @@ class ListStateToImageItem extends ListItemBase {
    */
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
     $properties['value'] = DataDefinition::create('string')
-      ->setLabel(new TranslatableMarkup('Text value'))
+      ->setLabel(new TranslatableMarkup('Options'))
       ->addConstraint('Length', ['max' => 255])
       ->setRequired(TRUE);
+    
+    //New Added Code Begin
+    $properties['rowId'] = DataDefinition::create('integer')
+      ->setLabel(new TranslatableMarkup('Row ID'))
+      ->setRequired(TRUE);
 
+    $properties['columnId'] = DataDefinition::create('integer')
+      ->setLabel(new TranslatableMarkup('Column ID'))
+      ->setRequired(TRUE);
+    //New Added Code End
     return $properties;
   }
 
@@ -40,9 +49,28 @@ class ListStateToImageItem extends ListItemBase {
     return [
       'columns' => [
         'value' => [
+          'description' => 'Seleted Option',
           'type' => 'varchar',
           'length' => 255,
+          'not null' => TRUE,
+          'default' => $field_definition->getSetting('default_state_field_value')['value'],
         ],
+        //New Added Code Begin
+        'rowId' => [
+          'description' => 'Row ID of the field',
+          'type' => 'int',
+          'size' => 'small',
+          'not null' => TRUE,
+          'default' => $field_definition->getSetting('default_state_field_value')['rowId'],
+        ],
+        'columnId' => [
+          'description' => 'Column ID of the field',
+          'type' => 'int',
+          'size' => 'small',
+          'not null' => TRUE,
+          'default' => $field_definition->getSetting('default_state_field_value')['columnId'],
+        ],
+        //New Added Code End
       ],
       'indexes' => [
         'value' => ['value'],

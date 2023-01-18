@@ -39,6 +39,7 @@ class StateToImageDefaultFormatter extends FormatterBase {
         // If the stored value is in the current set of allowed values, display
         // the associated label, otherwise just display the raw value.
         $output = $options[$value] ?? $value;
+        $output = $item->rowId .':' . $item->columnId .':'.$output;
         $elements[$delta] = [
           '#markup' => $output,
           '#allowed_tags' => FieldFilteredMarkup::allowedTags(),
