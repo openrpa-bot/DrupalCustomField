@@ -29,7 +29,7 @@ class ListStateToImageItem extends ListItemBase {
       ->setLabel(new TranslatableMarkup('Options'))
       ->addConstraint('Length', ['max' => 255])
       ->setRequired(TRUE);
-    
+
     //New Added Code Begin
     $properties['rowId'] = DataDefinition::create('integer')
       ->setLabel(new TranslatableMarkup('Row ID'))
@@ -46,6 +46,7 @@ class ListStateToImageItem extends ListItemBase {
    * {@inheritdoc}
    */
   public static function schema(FieldStorageDefinitionInterface $field_definition) {
+    $field_settings = $field_definition->getSettings();
     return [
       'columns' => [
         'value' => [
@@ -53,7 +54,7 @@ class ListStateToImageItem extends ListItemBase {
           'type' => 'varchar',
           'length' => 255,
           'not null' => TRUE,
-          'default' => $field_definition->getSetting('default_state_field_value')['value'],
+          'default' => $field_settings['default_state_field_value']['value'],
         ],
         //New Added Code Begin
         'rowId' => [
@@ -61,14 +62,14 @@ class ListStateToImageItem extends ListItemBase {
           'type' => 'int',
           'size' => 'small',
           'not null' => TRUE,
-          'default' => $field_definition->getSetting('default_state_field_value')['rowId'],
+          'default' => $field_settings['default_state_field_value']['rowId'],
         ],
         'columnId' => [
           'description' => 'Column ID of the field',
           'type' => 'int',
           'size' => 'small',
           'not null' => TRUE,
-          'default' => $field_definition->getSetting('default_state_field_value')['columnId'],
+          'default' => $field_settings['default_state_field_value']['columnId'],
         ],
         //New Added Code End
       ],
@@ -110,7 +111,7 @@ class ListStateToImageItem extends ListItemBase {
      * {@inheritdoc}
      */
     public static function defaultStorageSettings() {
-      return [
+      return parent::defaultStorageSettings() + [
         'rowId_Max_Limit'         => 100,
         'columnId_Max_Limit'      => 100,
         'Option_Length'           => 255,
@@ -120,20 +121,20 @@ class ListStateToImageItem extends ListItemBase {
             'rowId' => 3,
             'columnId' => 3,
         ],
-      ] + parent::defaultStorageSettings();
+      ];
     }
 
     /**
      * {@inheritdoc}
      */
     public static function defaultFieldSettings() {
-      return [
+      return parent::defaultFieldSettings() + [
         'default_state_field_value' => [
             'value' => 'None',
             'rowId' => 2,
             'columnId' => 2,
           ],
-      ] + parent::defaultFieldSettings();
+      ];
     }
     //New Added Code End
 }

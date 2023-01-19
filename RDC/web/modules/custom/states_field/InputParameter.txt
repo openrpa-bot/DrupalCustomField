@@ -2,3 +2,12 @@ None|Blank.jpg
 Available|Blank.jpg
 Selected|Green.jpg
 Booked|Saffron.png
+
+
+None.jpg|None
+Available.jpg|Available
+Selected.jpg|Selected
+Booked.png|Booked
+
+
+var_dump( $element );
