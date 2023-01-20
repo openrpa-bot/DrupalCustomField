@@ -28,7 +28,7 @@ class ListStateToImageItem extends ListItemBase {
     $properties['value'] = DataDefinition::create('string')
       ->setLabel(new TranslatableMarkup('Options'))
       ->addConstraint('Length', ['max' => 255])
-      ->setRequired(TRUE);
+      ;//->setRequired(TRUE);
 
     //New Added Code Begin
     $properties['rowId'] = DataDefinition::create('integer')
@@ -53,7 +53,7 @@ class ListStateToImageItem extends ListItemBase {
           'description' => 'Seleted Option',
           'type' => 'varchar',
           'length' => 255,
-          'not null' => TRUE,
+          'not null' => FALSE,
           'default' => $field_settings['default_state_field_value']['value'],
         ],
         //New Added Code Begin
@@ -61,14 +61,14 @@ class ListStateToImageItem extends ListItemBase {
           'description' => 'Row ID of the field',
           'type' => 'int',
           'size' => 'small',
-          'not null' => TRUE,
+          'not null' => FALSE,
           'default' => $field_settings['default_state_field_value']['rowId'],
         ],
         'columnId' => [
           'description' => 'Column ID of the field',
           'type' => 'int',
           'size' => 'small',
-          'not null' => TRUE,
+          'not null' => FALSE,
           'default' => $field_settings['default_state_field_value']['columnId'],
         ],
         //New Added Code End

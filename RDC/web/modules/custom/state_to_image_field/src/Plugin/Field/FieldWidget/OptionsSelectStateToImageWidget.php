@@ -28,7 +28,7 @@ class OptionsSelectStateToImageWidget extends OptionsWidgetBase {
      $item = $items[$delta];
      $element = parent::formElement($items, $delta, $element, $form, $form_state);
      $defaultSettings = $this->fieldDefinition->getSetting('default_state_field_value');
-
+//var_dump($element);
      $element['value'] = [
        '#type' => 'select',
        '#options' => $this->getOptions($items->getEntity()),
@@ -40,18 +40,64 @@ class OptionsSelectStateToImageWidget extends OptionsWidgetBase {
          '#type' => 'number',
          '#title' => $this->t('Row ID'),
          '#default_value' => $defaultSettings['rowId'],
-         '#required' => TRUE,
+         //'#required' => TRUE,
          '#min' => 1,
      ];
      $element['columnId'] = [
          '#type' => 'number',
          '#title' => $this->t('Column ID'),
          '#default_value' => $defaultSettings['columnId'],
-         '#required' => TRUE,
+         //'#required' => TRUE,
          '#min' => 1,
      ];
-     return $element;
+
+//var_dump($element['#element_validate']);
+         // Add our custom validator.
+         $element['#element_validate'][0] = [static::class, 'myValidateElement'];
+//var_dump($element['#element_validate']);
+         // The rest of the $element is built by child method implementations.
+
+         return $element;
+
    }
+
+public static function myValidateElement(array $element, FormStateInterface $form_state) {
+
+
+    if ($element['value']['#required'] && $element['value']['#value'] == '_none') {
+    //var_dump($element['value']['#required']);return;
+      $form_state->setError($element, new TranslatableMarkup('@name field is required.', ['@name' => $element['#title']]));
+    }
+var_dump(is_array($element['value']['#value']));return;
+$form_state->setError('Error');
+    // Massage submitted form values.
+    // Drupal\Core\Field\WidgetBase::submit() expects values as
+    // an array of values keyed by delta first, then by column, while our
+    // widgets return the opposite.
+
+    if (is_array($element['value']['#value'])) {
+      $values = array_values($element['value']['#value']);
+    }
+    else {
+      $values = [$element['value']['#value']];
+    }
+
+    // Filter out the 'none' option. Use a strict comparison, because
+    // 0 == 'any string'.
+    $index = array_search('_none', $values, TRUE);
+    var_dump($values);return;
+    if ($index !== FALSE) {
+      unset($values[$index]);
+    }
+
+    // Transpose selections from field => delta to delta => field.
+    $items = [];
+    foreach ($values as $value) {
+      $items[] = [$element['#key_column'] => $value];
+    }
+
+    $form_state->setValueForElement($element, $items);
+  }
 
   /**
    * {@inheritdoc}
