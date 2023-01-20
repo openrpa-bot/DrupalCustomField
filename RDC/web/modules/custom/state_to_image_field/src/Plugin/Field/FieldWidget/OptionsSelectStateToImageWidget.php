@@ -33,6 +33,7 @@ class OptionsSelectStateToImageWidget extends OptionsWidgetBase {
        '#type' => 'select',
        '#options' => $this->getOptions($items->getEntity()),
        '#default_value' => $defaultSettings['value'],
+       '#required' => TRUE,
        // Do not display a 'multiple' select box if there is only one option.
        '#multiple' => $this->multiple && count($this->options) > 1,
      ];
@@ -40,26 +41,19 @@ class OptionsSelectStateToImageWidget extends OptionsWidgetBase {
          '#type' => 'number',
          '#title' => $this->t('Row ID'),
          '#default_value' => $defaultSettings['rowId'],
-         //'#required' => TRUE,
+         '#required' => TRUE,
          '#min' => 1,
      ];
      $element['columnId'] = [
          '#type' => 'number',
          '#title' => $this->t('Column ID'),
          '#default_value' => $defaultSettings['columnId'],
-         //'#required' => TRUE,
+         '#required' => TRUE,
          '#min' => 1,
      ];
-
-//var_dump($element['#element_validate']);
-         // Add our custom validator.
-         $element['#element_validate'][0] = [static::class, 'myValidateElement'];
-//var_dump($element['#element_validate']);
-         // The rest of the $element is built by child method implementations.
-
-         return $element;
-
-   }
+     $element['#element_validate'][0] = [static::class, 'myValidateElement'];
+     return $element;
+}
 
 public static function myValidateElement(array $element, FormStateInterface $form_state) {
 
