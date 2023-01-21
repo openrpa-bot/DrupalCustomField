@@ -32,7 +32,7 @@ class OptionsSelectStateToImageWidget extends OptionsWidgetBase {
      $element['value'] = [
        '#type' => 'select',
        '#options' => $this->getOptions($items->getEntity()),
-       '#default_value' => $defaultSettings['value'],
+       '#default_value' => $items[$delta]->value,
        '#required' => TRUE,
        // Do not display a 'multiple' select box if there is only one option.
        '#multiple' => $this->multiple && count($this->options) > 1,
@@ -40,14 +40,14 @@ class OptionsSelectStateToImageWidget extends OptionsWidgetBase {
      $element['rowId'] = [
          '#type' => 'number',
          '#title' => $this->t('Row ID'),
-         '#default_value' => $defaultSettings['rowId'],
+         '#default_value' => $items[$delta]->rowId,
          '#required' => TRUE,
          '#min' => 1,
      ];
      $element['columnId'] = [
          '#type' => 'number',
          '#title' => $this->t('Column ID'),
-         '#default_value' => $defaultSettings['columnId'],
+         '#default_value' => $items[$delta]->columnId,
          '#required' => TRUE,
          '#min' => 1,
      ];

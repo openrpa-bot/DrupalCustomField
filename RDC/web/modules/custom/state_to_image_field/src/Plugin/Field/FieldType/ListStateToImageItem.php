@@ -108,6 +108,17 @@ class ListStateToImageItem extends ListItemBase {
   }
     //New Added Code Begin
     /**
+      * {@inheritdoc}
+      */
+       public function isEmpty() {
+    $value1 = $this->get('value')->getValue();
+    $value2 = $this->get('rowId')->getValue();
+    $value3 = $this->get('columnId')->getValue();
+
+    return $value1 === NULL || $value1 === '' ||  $value2 === NULL || $value2 === '' ||  $value3 === NULL || $value3 === '';
+     }
+
+    /**
      * {@inheritdoc}
      */
     public static function defaultStorageSettings() {
