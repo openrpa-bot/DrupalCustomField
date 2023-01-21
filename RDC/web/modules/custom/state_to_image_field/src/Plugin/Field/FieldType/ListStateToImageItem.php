@@ -16,7 +16,7 @@ use Drupal\Core\TypedData\DataDefinition;
  *   description = @Translation("This field stores text values from a list of allowed 'value => label' pairs, i.e. 'US States': IL => Illinois, IA => Iowa, IN => Indiana."),
  *   category = @Translation("State To Image"),
  *   default_widget = "state_to_image_field_widget",
- *   default_formatter = "state_to_image_field_formatter",
+ *   default_formatter = "state_to_image_formatter",
  * )
  */
 class ListStateToImageItem extends ListItemBase {
