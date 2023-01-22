@@ -35,19 +35,12 @@ class StateToImageFormatter extends FormatterBase {
       $options = OptGroup::flattenOptions($provider->getPossibleOptions());
 
       foreach ($items as $delta => $item) {
-        $value = $item->value;
-        // If the stored value is in the current set of allowed values, display
-        // the associated label, otherwise just display the raw value.
-        $output = $options[$value] ?? $value;
-        $output = $item->value;
-        $elements[$delta] = [
-          '#markup' => $output,
+         $elements[$delta] = [
+          '#markup' => '<img loading="lazy" src="/DrupalCustomField/RDC/web/sites/default/files/inline-images/'.$item->value.'" width="40" height="40" alt="" typeof="foaf:Image">',
           '#allowed_tags' => FieldFilteredMarkup::allowedTags(),
         ];
       }
     }
-
     return $elements;
   }
-
 }
